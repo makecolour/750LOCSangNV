@@ -112,7 +112,7 @@ public class StudentsManagement {
      * @param sl
      */
     private void printList(ArrayList<Student> sl) {
-        System.out.println("ID                  Student Name        Semester            Course Name          Quantity");
+        System.out.println("ID                  Student Name        Semester            Course Name            Quantity");
         for (Student s : sl) {
             int count = 1;
             Course java = new Course("Java");
