@@ -11,12 +11,15 @@ package j1.l.p0021;
 
 /**
  * This class represent Course object
+ *
  * @author quyen
  */
 public class Course {
+
     private String name;
 
     /**
+     * Constructor with parameter
      *
      * @param name
      */
@@ -25,12 +28,13 @@ public class Course {
     }
 
     /**
-     *
+     * Constructor without parameter
      */
     public Course() {
     }
 
     /**
+     * Getter of Course's name
      *
      * @return
      */
@@ -39,11 +43,12 @@ public class Course {
     }
 
     /**
+     * Setter of String's name
      *
      * @param name
      */
     public void setName(String name) {
         this.name = name;
     }
-    
+
 }

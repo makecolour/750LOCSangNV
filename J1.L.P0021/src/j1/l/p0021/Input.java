@@ -1,7 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/*							
+ * Copyright(C) 2023,  FPT University.							
+ * Students management system							
+ * Manage information of Students					
+ *							
+ * Record of change:							
+ * DATE              Version             AUTHOR                       DESCRIPTION							
+ * <2023-10-25>       <1.0>          <Nguyen Thuong Quyen>     <Manage information of Students using List>							
  */
 package j1.l.p0021;
 

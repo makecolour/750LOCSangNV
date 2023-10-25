@@ -1,11 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/*							
+ * Copyright(C) 2023,  FPT University.							
+ * Students management system							
+ * Manage information of Students					
+ *							
+ * Record of change:							
+ * DATE              Version             AUTHOR                       DESCRIPTION							
+ * <2023-10-25>       <1.0>          <Nguyen Thuong Quyen>     <Manage information of Students using List>							
  */
 package j1.l.p0021;
 
 /**
+ * This class represent Student objects
  *
  * @author quyen
  */
@@ -17,12 +22,13 @@ public class Student {
     private CoursesList cl = new CoursesList();
 
     /**
-     *
+     * Constructor
      */
     public Student() {
     }
 
     /**
+     * Constructor with param
      *
      * @param id
      * @param name
@@ -35,6 +41,7 @@ public class Student {
     }
 
     /**
+     * Getter of ID
      *
      * @return
      */
@@ -43,6 +50,7 @@ public class Student {
     }
 
     /**
+     * Getter of Name
      *
      * @return
      */
@@ -51,6 +59,7 @@ public class Student {
     }
 
     /**
+     * Getter of Semester
      *
      * @return
      */
@@ -59,6 +68,7 @@ public class Student {
     }
 
     /**
+     * Getter of Courses
      *
      * @return
      */
@@ -67,6 +77,7 @@ public class Student {
     }
 
     /**
+     * Setter of ID
      *
      * @param id
      */
@@ -75,6 +86,7 @@ public class Student {
     }
 
     /**
+     * Setter of Name
      *
      * @param name
      */
@@ -83,6 +95,7 @@ public class Student {
     }
 
     /**
+     * Setter of Semester
      *
      * @param semester
      */
@@ -91,6 +104,7 @@ public class Student {
     }
 
     /**
+     * Setter of Courses
      *
      * @param cl
      */

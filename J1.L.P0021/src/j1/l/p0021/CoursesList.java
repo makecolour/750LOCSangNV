@@ -8,6 +8,7 @@ package j1.l.p0021;
 import java.util.HashMap;
 
 /**
+ * HashMap of courses
  *
  * @author quyen
  */
@@ -16,6 +17,7 @@ public class CoursesList {
     private HashMap<Course, Integer> courses = new HashMap<Course, Integer>();
 
     /**
+     * Constructor
      *
      * @return
      */
@@ -24,7 +26,7 @@ public class CoursesList {
     }
 
     /**
-     *
+     * Constructor
      */
     public CoursesList() {
         courses.put(new Course("Java"), 0);
@@ -34,6 +36,7 @@ public class CoursesList {
     }
 
     /**
+     * set Courses HashMap
      *
      * @param courses
      */

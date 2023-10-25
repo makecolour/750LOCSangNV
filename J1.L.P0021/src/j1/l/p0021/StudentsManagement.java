@@ -1,7 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/*							
+ * Copyright(C) 2023,  FPT University.							
+ * Students management system							
+ * Manage information of Students					
+ *							
+ * Record of change:							
+ * DATE              Version             AUTHOR                       DESCRIPTION							
+ * <2023-10-25>       <1.0>          <Nguyen Thuong Quyen>     <Manage information of Students using List>							
  */
 package j1.l.p0021;
 
@@ -14,6 +18,8 @@ import java.util.Scanner;
 import java.util.logging.Logger;
 
 /**
+ * This is the most important of the program, which contains almost every
+ * function that this program perform
  *
  * @author quyen
  */
@@ -24,15 +30,26 @@ public class StudentsManagement {
     StudentsList sl = new StudentsList();
     Input input = new Input();
 
+    /**
+     * Find if there exists a Student with input ID
+     *
+     * @param id
+     * @return
+     */
     private Student findById(String id) {
         for (Student s : sl.getStudents()) {
-            if (id.toLowerCase().equals(s.getId().toLowerCase())) {
+            if (id.equalsIgnoreCase(s.getId())) {
                 return s;
             }
         }
         return null;
     }
 
+    /**
+     * Create new Student and let user input
+     *
+     * @return
+     */
     private Student createNew() {
         String id;
         String name;
@@ -53,6 +70,11 @@ public class StudentsManagement {
         return s;
     }
 
+    /**
+     * Get user's input for Student's Courses
+     *
+     * @return
+     */
     private HashMap<Course, Integer> inputCourses() {
         int java = input.getInt("Number of Java Courses: ", 0, Integer.MAX_VALUE);
         int net = input.getInt("Number of .Net Courses: ", 0, Integer.MAX_VALUE);
@@ -65,6 +87,12 @@ public class StudentsManagement {
         return course;
     }
 
+    /**
+     * Find list of students share the whole or a part of name
+     *
+     * @param name
+     * @return
+     */
     private ArrayList<Student> findByName(String name) {
         if (sl.getStudents().isEmpty()) {
             return null;
@@ -78,15 +106,20 @@ public class StudentsManagement {
         return found;
     }
 
+    /**
+     * Print out a list of Student
+     *
+     * @param sl
+     */
     private void printList(ArrayList<Student> sl) {
         System.out.println("ID                  Student Name        Semester            Course Name          Quantity");
         for (Student s : sl) {
             int count = 1;
-            Course java = new Course("Java");   
+            Course java = new Course("Java");
             for (Course c : s.getCl().getCourses().keySet()) {
                 if (s.getCl().getCourses().get(c) != 0) {
                     if (count == 1) {
-                        System.out.printf("%-20s%-20s%-20s%-20s   %d\n", s.getId(), s.getName(),Integer.toString(s.getSemester()), c.getName(), s.getCl().getCourses().get(c));
+                        System.out.printf("%-20s%-20s%-20s%-20s   %d\n", s.getId(), s.getName(), Integer.toString(s.getSemester()), c.getName(), s.getCl().getCourses().get(c));
                         count++;
                     } else {
                         System.out.printf("                                                            %-20s   %d\n", c.getName(), s.getCl().getCourses().get(c));
@@ -97,6 +130,11 @@ public class StudentsManagement {
         }
     }
 
+    /**
+     * Update a student with user's input
+     *
+     * @param old
+     */
     private void updateStudent(Student old) {
         String name;
         int semester;
@@ -110,6 +148,11 @@ public class StudentsManagement {
         System.out.println("Updated successfully");
     }
 
+    /**
+     * Delete a student
+     *
+     * @param old
+     */
     private void delStudent(Student old) {
         while (true) {
             char choice = input.getString("Do you want to continue Y/N? ", "", "").charAt(0);
@@ -123,6 +166,9 @@ public class StudentsManagement {
         System.out.println("Deleted Successfully");
     }
 
+    /**
+     * Create 2 students, if number of students >=3, ask user
+     */
     void createStudent() {
         while (true) {
             if (sl.getStudents().size() >= 3) {
@@ -143,6 +189,9 @@ public class StudentsManagement {
         }
     }
 
+    /**
+     * Find students with a part of the name, sort them by name then print out
+     */
     void findNSort() {
         String name = input.getString("Name: ", "", "");
         ArrayList<Student> s = new ArrayList();
@@ -159,6 +208,9 @@ public class StudentsManagement {
         }
     }
 
+    /**
+     * Update and Delete Student
+     */
     void upNDel() {
         String id = input.getString("ID: ", "ID must belike HE000000 or HS0000000", "^([Hh]){1}([ESes]){1}(\\d){6}$");
         Student s = findById(id);
@@ -184,6 +236,9 @@ public class StudentsManagement {
         }
     }
 
+    /**
+     * Report all Students
+     */
     void report() {
         printList(sl.getStudents());
     }
