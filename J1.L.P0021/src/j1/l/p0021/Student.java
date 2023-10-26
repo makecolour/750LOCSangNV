@@ -20,6 +20,7 @@ public class Student {
     private String name;
     private int semester;
     private CoursesList cl = new CoursesList();
+    private int total;
 
     /**
      * Constructor
@@ -110,6 +111,14 @@ public class Student {
      */
     public void setCl(CoursesList cl) {
         this.cl = cl;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+
+    public int getTotal() {
+        return total;
     }
 
 }

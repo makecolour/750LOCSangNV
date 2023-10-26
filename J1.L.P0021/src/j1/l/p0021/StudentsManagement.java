@@ -65,7 +65,7 @@ public class StudentsManagement {
         name = input.getString("Name: ", "", "");
         semester = input.getInt("Semester: ", 1, 10);
         Student s = new Student(id, name, semester);
-        course.setCourses(inputCourses());
+        course.setCourses(inputCourses(s));
         s.setCl(course);
         return s;
     }
@@ -75,15 +75,45 @@ public class StudentsManagement {
      *
      * @return
      */
-    private HashMap<Course, Integer> inputCourses() {
-        int java = input.getInt("Number of Java Courses: ", 0, Integer.MAX_VALUE);
-        int net = input.getInt("Number of .Net Courses: ", 0, Integer.MAX_VALUE);
-        int c = input.getInt("Number of C/C++ Courses: ", 0, Integer.MAX_VALUE);
+    private HashMap<Course, Integer> inputCourses(Student s) {
+//        int java = input.getInt("Number of Java Courses: ", 0, Integer.MAX_VALUE);
+//        int net = input.getInt("Number of .Net Courses: ", 0, Integer.MAX_VALUE);
+//        int c = input.getInt("Number of C/C++ Courses: ", 0, Integer.MAX_VALUE);
+int java=0;
+int c=0;
+int net=0;
+        System.out.println("1. Add Java Course");
+        System.out.println("2. Add C/C++ Course");
+        System.out.println("3. Add .Net Course");
+        System.out.println("4. Exit");
+        while(true)
+        {
+            int choice = input.getInt("Choose an option: ", 1, 4);
+            switch(choice)
+            {
+                case 1:
+                    java++;
+                    break;
+                case 2:
+                    c++;
+                    break;
+                case 3: 
+                    net++;
+                    break;
+                case 4:
+                    break;
+            }
+            if(choice==4)
+            {
+                break;
+            }
+        }
         HashMap<Course, Integer> course = new HashMap<Course, Integer>();
         course.put(new Course("Java"), java);
         course.put(new Course(".Net"), net);
         course.put(new Course("C/C++"), c);
         course.put(new Course("Total"), (java + net + c));
+        s.setTotal(net+java+c);
         return course;
     }
 
@@ -112,20 +142,20 @@ public class StudentsManagement {
      * @param sl
      */
     private void printList(ArrayList<Student> sl) {
-        System.out.println("ID                  Student Name        Semester            Course Name            Quantity");
+        System.out.println("ID                  Student Name        Semester            Course Name          Quantity              Total");
         for (Student s : sl) {
             int count = 1;
-            Course java = new Course("Java");
+            Course total = new Course();
+            total.setName("Total");
             for (Course c : s.getCl().getCourses().keySet()) {
-                if (s.getCl().getCourses().get(c) != 0) {
+                if (s.getCl().getCourses().get(c) != 0&&!c.getName().equalsIgnoreCase("Total")) {
                     if (count == 1) {
-                        System.out.printf("%-20s%-20s%-20s%-20s   %d\n", s.getId(), s.getName(), Integer.toString(s.getSemester()), c.getName(), s.getCl().getCourses().get(c));
+                        System.out.printf("%-20s%-20s%-20s%-20s   %d\t\t\t\t%d\n", s.getId(), s.getName(), Integer.toString(s.getSemester()), c.getName(), s.getCl().getCourses().get(c), s.getTotal());
                         count++;
                     } else {
                         System.out.printf("                                                            %-20s   %d\n", c.getName(), s.getCl().getCourses().get(c));
                     }
                 }
-
             }
         }
     }
@@ -142,7 +172,7 @@ public class StudentsManagement {
         name = input.getString("Name: ", "", "");
         semester = input.getInt("Semester: ", 1, 10);
         Student s = new Student(old.getId(), name, semester);
-        course.setCourses(inputCourses());
+        course.setCourses(inputCourses(s));
         s.setCl(course);
         sl.getStudents().set(sl.getStudents().indexOf(old), s);
         System.out.println("Updated successfully");
@@ -212,7 +242,7 @@ public class StudentsManagement {
      * Update and Delete Student
      */
     void upNDel() {
-        String id = input.getString("ID: ", "ID must belike HE000000 or HS0000000", "^([Hh]){1}([ESes]){1}(\\d){6}$");
+        String id = input.getString("ID: ", "", "");
         Student s = findById(id);
         if (sl.getStudents().isEmpty()) {
             LOG.warning("No student available");
