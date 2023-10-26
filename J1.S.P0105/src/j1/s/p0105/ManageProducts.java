@@ -54,7 +54,7 @@ public class ManageProducts {
         Date now = new Date();
         return now;
     }
-
+    
     /**
      * Let user input product's properties
      *
@@ -69,13 +69,17 @@ public class ManageProducts {
         Date mfg;
         do {
             do {
-                mfg = input.getDate("Date of manufacture: ");
+                mfg = input.getDate("Date of manufacture (dd-MM-yyyy): ");
             } while (!compareDate(mfg, getToday(), "Date of manufacture must before or on today"));
-            exp = input.getDate("Date of expiry: ");
+            exp = input.getDate("Date of expiry (dd-MM-yyyy): ");
         } while (!compareDate(mfg, exp, "Date of manufacture must before or on date of expiry"));
         String category = input.getString("Category: ", "", "");
+        sl.printKeeperList();
         StoreKeeper sk = sl.choose();
-        Date receiptDate = input.getDate("Receipt date: ");
+        Date receiptDate;
+        do{
+        receiptDate = input.getDate("Receipt date (dd-MM-yyyy): ");
+        }while(!compareDate(mfg,receiptDate, "Receipt date must after date of manufacture"));
         return new Products(id, name, location, price, exp, mfg, category, sk, receiptDate);
     }
 
@@ -158,6 +162,25 @@ public class ManageProducts {
         }
     }
 
+    private ArrayList<Products> findByKeeper(String keeper)
+    {
+        ArrayList<Products> found = new ArrayList();
+        if(pl.getProdList().isEmpty())
+        {
+            return null;
+        }
+        else
+        {
+            for(Products p : pl.getProdList())
+            {
+                if(p.getStorekeeper().getStoreKeeper().equalsIgnoreCase(keeper))
+                {
+                    found.add(p);
+                }
+            }
+            return found;
+        }
+    }
     /**
      * Find products share the same Receipt Date
      *
@@ -188,7 +211,7 @@ public class ManageProducts {
             LOG.warning("No product available");
             return;
         }
-        SimpleDateFormat format = new SimpleDateFormat();
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyy");
         format.setLenient(false);
         System.out.println("ID                  Name                   Location                 Price                   Date of expiry                  Date of manufacture                  Category                    Storekeeper                 Receipt date");
         for (Products p : arr) {
@@ -279,8 +302,16 @@ public class ManageProducts {
                 }
                 return;
             case 3:
-                sl.printKeeperList();
-                prod = findByStore(sl.choose());
+//                sl.printKeeperList();
+//                prod = findByStore(sl.choose());
+//                if (null == prod) {
+//                    LOG.warning("No products available");
+//                    return;
+//                } else {
+//                    print(prod);
+//                }
+                String keeper = input.getString("Storekeeper: ", "", "");
+                prod = findByKeeper(keeper);
                 if (null == prod) {
                     LOG.warning("No products available");
                     return;
@@ -308,7 +339,20 @@ public class ManageProducts {
      */
     void sortProduct() {
         ArrayList<Products> arr = pl.getProdList();
-        Collections.sort(arr, Comparator.comparing(Products::getId));
+        System.out.println("Search by: ");
+        System.out.println("1. Expiry Date");
+        System.out.println("2. Date of manufacture");
+        int choice = input.getInt("Choose an option: ", 1, 2);
+        switch(choice)
+        {
+            case 1:
+                Collections.sort(arr, Comparator.comparing(Products::getExp));
+                break;
+            case 2:
+                Collections.sort(arr, Comparator.comparing(Products::getMfg));
+                break;
+        }
+        
         print(arr);
     }
 }

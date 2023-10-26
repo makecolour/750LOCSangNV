@@ -87,7 +87,6 @@ public class StoreKeeperList {
 
     StoreKeeper choose() {
         Input input = new Input();
-        printKeeperList();
         int choice = input.getInt("Choose a Store Keeper: ", 1, keeperList.size());
         return keeperList.get(choice - 1);
     }

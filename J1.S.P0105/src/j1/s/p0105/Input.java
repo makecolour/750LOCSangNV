@@ -108,7 +108,7 @@ public class Input {
                 try {
                     choice = Double.parseDouble(input.trim());
                     //choice must be in range min to max
-                    if (choice > 0) {
+                    if (choice >= 0) {
                         break;
                     } else {
                         logger.warning("Please input a positive variable");
@@ -136,9 +136,27 @@ public class Input {
                 form.setLenient(false);
                 Date date = form.parse(result.trim());
                 if (result.trim().equals(form.format(date))) {
-                    return date;
+                    if(date.getYear()>=0)
+                    {
+                        if(date.getMonth()>=0)
+                        {
+                            if(date.getDate()>=1)
+                            {
+                                return date;
+                            }
+                            else{
+                                logger.warning("Please input a date after 01-01-1900");
+                            }
+                        }
+                        else{
+                            logger.warning("Please input a date after 01-01-1900");
+                        }
+                    }
+                    else{
+                        logger.warning("Please input a date after 01-01-1900");
+                    }
                 } else {
-                    logger.warning("Please input a valid date format");
+                    logger.warning("Please input a date after 01-01-1900");
                 }
             } catch (Exception ex) {
                 logger.warning("Please input a valid date format");
