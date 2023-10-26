@@ -51,7 +51,7 @@ public class EmployeeManagement {
      */
     private Employee findByID(String id) {
         for (Employee e : el.getList()) {
-            if (e.getId().equals(id)) {
+            if (e.getId().equalsIgnoreCase(id)) {
                 return e;
             }
         }
