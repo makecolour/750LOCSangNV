@@ -56,7 +56,7 @@ public class StudentsManagement {
         int semester;
         CoursesList course = new CoursesList();
         while (true) {
-            id = input.getString("ID: ", "ID must belike HE000000 or HS0000000", "^([Hh]){1}([ESes]){1}(\\d){6}$");
+            id = input.getString("ID: ", "", "");
             if (findById(id) == null) {
                 break;
             }
