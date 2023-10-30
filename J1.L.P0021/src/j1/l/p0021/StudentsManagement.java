@@ -79,32 +79,29 @@ public class StudentsManagement {
 //        int java = input.getInt("Number of Java Courses: ", 0, Integer.MAX_VALUE);
 //        int net = input.getInt("Number of .Net Courses: ", 0, Integer.MAX_VALUE);
 //        int c = input.getInt("Number of C/C++ Courses: ", 0, Integer.MAX_VALUE);
-int java=0;
-int c=0;
-int net=0;
+        int java = 0;
+        int c = 0;
+        int net = 0;
         System.out.println("1. Add Java Course");
         System.out.println("2. Add C/C++ Course");
         System.out.println("3. Add .Net Course");
         System.out.println("4. Exit");
-        while(true)
-        {
+        while (true) {
             int choice = input.getInt("Choose an option: ", 1, 4);
-            switch(choice)
-            {
+            switch (choice) {
                 case 1:
                     java++;
                     break;
                 case 2:
                     c++;
                     break;
-                case 3: 
+                case 3:
                     net++;
                     break;
                 case 4:
                     break;
             }
-            if(choice==4)
-            {
+            if (choice == 4) {
                 break;
             }
         }
@@ -113,7 +110,7 @@ int net=0;
         course.put(new Course(".Net"), net);
         course.put(new Course("C/C++"), c);
         course.put(new Course("Total"), (java + net + c));
-        s.setTotal(net+java+c);
+        s.setTotal(net + java + c);
         return course;
     }
 
@@ -144,19 +141,25 @@ int net=0;
     private void printList(ArrayList<Student> sl) {
         System.out.println("ID                  Student Name        Semester            Course Name          Quantity              Total");
         for (Student s : sl) {
-            int count = 1;
-            Course total = new Course();
-            total.setName("Total");
-            for (Course c : s.getCl().getCourses().keySet()) {
-                if (s.getCl().getCourses().get(c) != 0&&!c.getName().equalsIgnoreCase("Total")) {
-                    if (count == 1) {
-                        System.out.printf("%-20s%-20s%-20s%-20s   %d\t\t\t\t%d\n", s.getId(), s.getName(), Integer.toString(s.getSemester()), c.getName(), s.getCl().getCourses().get(c), s.getTotal());
-                        count++;
-                    } else {
-                        System.out.printf("                                                            %-20s   %d\n", c.getName(), s.getCl().getCourses().get(c));
+            if (s.getTotal() == 0) {
+                System.out.printf("%-20s%-20s%-20s\n", s.getId(), s.getName(), Integer.toString(s.getSemester()));
+            } else {
+                int count = 1;
+                Course total = new Course();
+                total.setName("Total");
+                for (Course c : s.getCl().getCourses().keySet()) {
+                    if (s.getCl().getCourses().get(c) != 0 && !c.getName().equalsIgnoreCase("Total")) {
+                        if (count == 1) {
+                            System.out.printf("%-20s%-20s%-20s%-20s   %d\t\t\t\t%d\n", s.getId(), s.getName(), Integer.toString(s.getSemester()), c.getName(), s.getCl().getCourses().get(c), s.getTotal());
+                            count++;
+                        } else {
+                            System.out.printf("                                                            %-20s   %d\n", c.getName(), s.getCl().getCourses().get(c));
+                        }
                     }
+
                 }
             }
+
         }
     }
 
