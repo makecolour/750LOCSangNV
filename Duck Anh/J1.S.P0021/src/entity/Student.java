@@ -1,0 +1,148 @@
+/*				
+ * Copyright(C) 2023,  <FPT University>.				
+ * <Student management system> :				
+ * <Create a Java console program to manage students.>				
+ *				
+ * Record of change:				
+ * DATE             Version     AUTHOR           DESCRIPTION				
+ * <2023-09-14>      <8.2>     <AnhTD>        <Write a program to manage information of student.>				
+ */
+package entity;
+
+/**
+ * The class contains attribute, constructor of Student and method toString,
+ * get, set to manage screen output string
+ *
+ *
+ * @author Tran Duc Anh
+ */
+public class Student implements Comparable<Student> {
+
+    private String id;
+    private String studentName;
+    private int semester;
+    private Course[] courseList;
+
+    /**
+     * Default constructor for the Student class. Initializes a Student object
+     * with default values.
+     */
+    public Student() {
+    }
+
+    /**
+     * Constructor for the Student class that sets the student's attributes.
+     *
+     * @param id The student's unique identifier.
+     * @param studentName The student's name.
+     * @param semester The current semester the student is enrolled in.
+     * @param courseList An array of courses the student is registered for.
+     */
+    public Student(String id, String studentName, int semester, Course[] courseList) {
+        this.id = id;
+        this.studentName = studentName;
+        this.semester = semester;
+        this.courseList = courseList;
+    }
+
+    /**
+     * Gets the ID of the student.
+     *
+     * @return The ID of the student as a String.
+     */
+    public String getId() {
+        return id;
+    }
+
+    /**
+     * Sets the ID of the student.
+     *
+     * @param id The new ID for the student, provided as a String.
+     */
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    /**
+     * Gets the name of the student.
+     *
+     * @return The name of the student as a String.
+     */
+    public String getStudentName() {
+        return studentName;
+    }
+
+    /**
+     * Sets the name of the student.
+     *
+     * @param studentName The new name for the student, provided as a String.
+     */
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
+    }
+
+    /**
+     * Gets the semester of the student.
+     *
+     * @return The semester of the student as a integer.
+     */
+    public int getSemester() {
+        return semester;
+    }
+
+    /**
+     * Sets the semester of the student.
+     *
+     * @param semester The new semester for the student, provided as a integer.
+     */
+    public void setSemester(int semester) {
+        this.semester = semester;
+    }
+
+    /**
+     * Gets the list of courses associated with the student.
+     *
+     * @return An array of Course objects representing the student's courses.
+     */
+    public Course[] getCourseList() {
+        return courseList;
+    }
+
+    /**
+     * Sets the list of courses associated with the student.
+     *
+     * @param courseList An array of Course objects representing the student's
+     * courses.
+     */
+    public void setCourseList(Course[] courseList) {
+        this.courseList = courseList;
+    }
+
+    /**
+     * Converts the Student object to a formatted string representation. This
+     * method returns a formatted string containing the student's ID, name, and
+     * semester.
+     *
+     * @return A formatted string representation of the Student object.
+     */
+    @Override
+    public String toString() {
+        return String.format("| %2s | %20s | %8d | ", id, studentName, semester);
+    }
+
+    /**
+     * This method is used to compare two Student objects based on their student
+     * names.
+     *
+     * @param o The Student object to compare with the current instance.
+     * @return An integer value indicating the result of the comparison: -
+     * Negative value if the current student's name is lexicographically less
+     * than o's name. - Zero if both student names are equal. - Positive value
+     * if the current student's name is lexicographically greater than o's name.
+     */
+    @Override
+    public int compareTo(Student o) {
+        return this.studentName.compareTo(o.getStudentName());
+    }
+
+}
