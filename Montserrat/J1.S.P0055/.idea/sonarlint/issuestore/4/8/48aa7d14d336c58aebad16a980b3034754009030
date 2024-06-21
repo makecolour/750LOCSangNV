@@ -1,0 +1,38 @@
+
+q
+java:S1066ì"/Merge this if statement with the enclosing one.(ç•¿¿ıÿÿÿÿJ$14b261da-fed2-488a-9825-8ae1ad8d50be
+¹
+java:S1319á"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(è×õÎşÿÿÿÿ8«³Ô¸ƒ2J$322b3859-6e35-4c0e-869a-80a03998f98e
+š
+java:S1488@"YImmediately return this expression instead of assigning it to the temporary variable "d".(ç±ßáøÿÿÿÿJ$661b1a3b-90b5-475a-809c-7fccd984c29a
+q
+java:S3740ã"/Provide the parametrized type for this generic.(ÒàÉ™ÿÿÿÿÿJ$1ee22d33-fd27-4af6-a5fc-f90948048806
+™	java:S135I"YReduce the total number of break and continue statements in this loop to use at most one.(˜ïˆÿÿÿÿÿJ$6aabee3d-2074-404d-b00a-a1e6a06727de
+•	java:S120
+"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¿çß‰J$d1f07420-4915-4356-8ed2-55e6ab6082a2
+”
+java:S1192p"QDefine a constant instead of duplicating this literal "Please input Y/N" 4 times.(Áº§Í8ÃÁºƒ2J$6c81fde0-21c7-4794-a3c7-08e09b44a82c
+Š
+java:S1192i"GDefine a constant instead of duplicating this literal "? Y/N " 3 times.(¸º«8ÄÁºƒ2J$7e049b91-048e-4ad3-886f-a41f93f69b38
+ƒ
+java:S1192K"GDefine a constant instead of duplicating this literal "Code: " 4 times.(ªàùJ$92366c51-cef8-4bcb-8be8-c926b20d605e
+˜
+java:S1192˜"TDefine a constant instead of duplicating this literal "No doctor available" 4 times.(ÎÂ8ÅÁºƒ2J$20db05ad-bbb8-4e08-b89d-86f3e2e1ee04
+”
+java:S1192¡"PDefine a constant instead of duplicating this literal "No doctor found" 3 times.(Îï¶ÿ8Ì¯Å»ƒ2J$b0cdf49a-e422-4214-a5ef-255de1571b91
+ 
+java:S4144-"]Update this method so that its implementation is not identical to "getDoctorByID" on line 30.(ƒıùÑ8Òñæ²ƒ2J$778e48f3-67ba-4f35-a80e-1887cc871c6e
+•
+java:S3776`"RRefactor this method to reduce its Cognitive Complexity from 28 to the 15 allowed.(î©ü§8ÇÁºƒ2J$d1d09d5d-1239-455e-bea5-231892063ab6
+e	java:S106a"+Replace this use of System.out by a logger.(ŸÍÓJ$4911b20b-7fbb-4342-9ffa-4f8e4d493ab4
+f	java:S106b"+Replace this use of System.out by a logger.(“¾‘ŒJ$46c0ccf1-2c64-4ee2-a5d0-816123eb456d
+r	java:S106c"+Replace this use of System.out by a logger.(Œı–ÿÿÿÿÿ8ÈÁºƒ2J$d7bea8d9-3223-4f67-a5a4-a35a2f805f8d
+d	java:S131e""Add a default case to this switch.(¨ÕÉ8ÈÁºƒ2J$f7a05f40-3458-4eb1-a4b6-be48b10d9156
+i
+java:S1125ë"'Remove the unnecessary boolean literal.(å“‚ÎøÿÿÿÿJ$90fd72b4-4f43-4871-9479-323bf8f575aa
+X
+java:S3626€"Remove this redundant jump.(ûÁİ…J$82915de1-6104-40db-9300-2a2e0f85aa86
+n	java:S106"+Replace this use of System.out by a logger.(ª‚ôø8–Áºƒ2J$0a2616d8-a2e4-43a2-802c-47b487d225f6
+”
+java:S3457‘"Q%n should be used in place of \n to produce the platform-specific line separator.(ØŸš8òæ²ƒ2J$32944193-eaf3-4d9d-a88a-4c0ab6e9ed0a
+m	java:S106‘"+Replace this use of System.out by a logger.(ØŸš8–Áºƒ2J$4d2b0754-d68f-4c56-a789-d645e0ca39c5

@@ -26,6 +26,16 @@ public class DoctorsManagement {
     Input input = new Input();
     private static final Logger LOG = Logger.getLogger(DoctorsManagement.class.getName());
 
+
+    public Doctor getDoctorByID(String id) {
+        for (Doctor d : doc.getList()) {
+            if (d.getCode().equalsIgnoreCase(id)) {
+                return d;
+            }
+        }
+        return null;
+    }
+
     /**
      * Find Doctor by ID and return it
      *
@@ -83,7 +93,7 @@ public class DoctorsManagement {
      *
      * @param d
      */
-    private void updateDoc(Doctor d) {
+    public void updateDoc(Doctor d) {
         System.out.println("1. Name");
         System.out.println("2. Specialization");
         System.out.println("3. Availability");
@@ -157,7 +167,7 @@ public class DoctorsManagement {
      *
      * @param d
      */
-    private void delDoc(Doctor d) {
+     public void delDoc(Doctor d) {
         while (true) {
             char change = input.getString("Do you want to delete this Doctor? Y/N ", "", "").charAt(0);
             if (change == 'y' || change == 'Y') {
@@ -212,7 +222,7 @@ public class DoctorsManagement {
      * @param query
      * @return
      */
-    private ArrayList<Doctor> searchDoc(String query) {
+    public ArrayList<Doctor> searchDoc(String query) {
         boolean check = checkQuery(query);
         ArrayList<Doctor> list = new ArrayList();
         for (Doctor d : doc.getList()) {
@@ -274,5 +284,21 @@ public class DoctorsManagement {
         }
         
         printDoc(doc.getList());
+    }
+
+    void addDoc(Doctor doctor) {
+        doc.getList().add(doctor);
+    }
+
+    void updateDoc(String code, String newName, String newSpecialization, int newAvailability) {
+        for (Doctor d : doc.getList()) {
+            if (d.getCode().equalsIgnoreCase(code)) {
+                d.setName(newName);
+                d.setSpecialization(newSpecialization);
+                d.setAvailability(newAvailability);
+                return;
+            }
+        }
+        LOG.warning("No doctor found with the provided code");
     }
 }

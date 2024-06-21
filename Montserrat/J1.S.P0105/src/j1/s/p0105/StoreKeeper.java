@@ -30,6 +30,10 @@ public class StoreKeeper {
         this.id = id;
     }
 
+    public StoreKeeper() {
+    }
+
+    
     /**
      * Get storekeeper's name
      *
